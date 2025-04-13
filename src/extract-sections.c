@@ -25,7 +25,7 @@ struct fw_section_entry {
 static struct fw_section_entry fw_sections[] = {
 	{ 0x00000000, 0x00000eff, "header" },
 	{ 0x00000f00, 0x00000fff, "oem" },
-	{ 0x00000100, 0x0074ffff, "bios" },
+	{ 0x00001000, 0x0074ffff, "bios" },
 	{ 0x00750000, 0x00752fff, "mrcd_1" },
 	{ 0x00753000, 0x00755fff, "mrcd_2" },
 	{ 0x00756000, 0x00758fff, "mrcd_3" },
