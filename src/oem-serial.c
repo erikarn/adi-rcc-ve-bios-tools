@@ -3,6 +3,7 @@
 #include <fcntl.h>
 #include <unistd.h>
 #include <err.h>
+#include <string.h>
 
 /*
  * TODO: when fw_sections from the other source files is
@@ -10,6 +11,13 @@
  */
 
 #define	OEM_SECTION_SIZE	256
+
+/*
+ * It's possible that the BIOS supports serial numbers that
+ * aren't 10 digits long, however I'm going to enforce that
+ * length here just to be careful.
+ */
+#define	OEM_SERIAL_NUMBER_LEN	10
 
 int
 main(int argc, const char *argv[])
@@ -28,11 +36,17 @@ main(int argc, const char *argv[])
 	fn = argv[1];
 	sn = argv[2];
 
+	snprintf(buf, OEM_SECTION_SIZE - 1, "%s", sn);
+	if (strlen(buf) != OEM_SERIAL_NUMBER_LEN) {
+		fprintf(stderr,
+		    "Invalid serial number length (must be %d digits)\n",
+		    OEM_SERIAL_NUMBER_LEN);
+		exit(1);
+	}
+
 	fd = open(fn, O_WRONLY | O_CREAT, 0644);
 	if (fd < 0)
 		err(1, "open (%s)", fn);
-
-	snprintf(buf, OEM_SECTION_SIZE - 1, "%s", sn);
 	sret = write(fd, buf, OEM_SECTION_SIZE);
 	if (sret < 0)
 		err(1, "write (%s)", fn);
