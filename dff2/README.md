@@ -14,3 +14,5 @@ Dump differences:
  * 0x00756000 -> 0x007582af - MRCD in bios-vendor.bin, 0xff in the vendor image
  * 0x00759000 -> 0x0075b2af - MRCD in bios-vendor.bin, 0xff in the vendor image
  * 0x0075c000 -> 0x0075e2af - MRCD in bios-vendor.bin, 0xff in the vendor image
+
+ * (next section starts at 0x76000000), and is the microcode, don't break this!
