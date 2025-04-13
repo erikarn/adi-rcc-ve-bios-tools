@@ -30,7 +30,8 @@ static struct fw_section_entry fw_sections[] = {
 	{ 0x00753000, 0x00755fff, "mrcd_2" },
 	{ 0x00756000, 0x00758fff, "mrcd_3" },
 	{ 0x00759000, 0x0075bfff, "mrcd_4" },
-	{ 0x0075c000, 0x0075ffff, "mrcd_5" },
+	{ 0x0075c000, 0x0075efff, "mrcd_5" },
+	{ 0x0075f000, 0x0075ffff, "pad_1" },
 	{ 0x00760000, 0x007fffff, "microcode" },
 	{ 0, 0, NULL },
 };
